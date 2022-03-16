@@ -1,0 +1,171 @@
+﻿
+@model perfume.Models.Homemenu.menuModel
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>Perfume puts the finishing touch to elegance.</h3>
+        <p>
+            Scent is our most primitive sense, it’s the closest thing to the emotional brain.
+            It penetrates you.
+            You love it, and you want to be part of it
+        </p>
+        <a href="#" class="btn">get yours now</a>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+    <h1 class="heading"> <span>Fragrance </span> makes us dream </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="../img/jui.jpg" alt="">
+        </div>
+
+        <div class="content">
+            <h3>Perfume is the art that makes memory speak</h3>
+            <p>
+                There is something quite magical about fragrance and scent, and perfume is about so much more than smelling good. Our choice of fragrance shares a little bit of our inner self with the world.
+            </p>
+            <p>As famous perfumer Olivier Creed once said, your handbag may not be remembered, but your perfume will.</p>
+            <a href="#" class="btn">learn more</a>
+        </div>
+
+    </div>
+    <div class="row ">
+
+        <div class="content ">
+            <h3>Fragrance is the voice of inanimate things.</h3>
+            <p>
+                Some of the most iconic fragrances to grace dressing tables around the world
+                are the fragrances curated by some of the most well-known ateliers. The creative geniuses behind these legendary fashion houses have not only shared their visions for exquisite garments, but have also gone on to create perfumes and scents that are equally
+                as pleasing to the nose as the garments are to the eyes.
+            </p>
+
+            <a href="#" class="btn">learn more</a>
+        </div>
+        <div class="image">
+            <img src="../img/prd.jpg" alt="">
+        </div>
+
+
+
+
+
+
+    </div>
+</section>
+
+
+//product
+<section class="blogs" id="blogs">
+
+    <h1 class="heading">  <span>Best sellers</span> </h1>
+
+    <div class="box-container">
+        @foreach (var item in Model.ListOfProducts)
+        {
+            if (@item.ProductId <8)
+            {
+
+                <div class="box">
+                    <div class="image">
+                        <img src="~/Perfumeimg/@item.ProductImage" alt="">
+                    </div>
+                    <div class="content">
+                        <p>@item.ProductName</p>
+
+                        <p>$@item.price </p>
+
+
+
+                        <p>
+                            @if (item.Quantity > 0)
+                            {
+                            <p>Available</p>
+                            using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId, url = "Index" }, FormMethod.Post))
+                            {
+                                <button class="btn" type="submit" >Shop it</button>
+
+                            }
+                            @*<p>Available</p>*@
+
+                        }
+                        else
+                        {
+                            <p>Not Available</p>
+                        }
+
+                            @*<a href="#" class="btn">SHOP IT</a>*@
+                        </div>
+                    </div>
+            }
+        }
+    </div>
+        
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="review" id="review">
+
+
+
+    <div class="box-container">
+
+
+        <div class="box">
+            <img src="../img/quote-img.png" alt="" class="quote">
+            <p>
+
+                There is something quite magical about fragrance and scent, and
+                perfume is about so much more than smelling good. Our choice of fragrance shares a
+                little bit of our inner self with the world, from light, floral and joyful, to intense,
+                rich and seductive, our perfume contributes to leaving a first impression on people never
+                met before, and that’s quite amazing. To think that something so simple as a scent, can
+                share such intimate details about
+                a person’s inner thoughts without uttering a single word.
+            </p>
+            <img src="../img/quote-img.png" alt="" class="quote">
+        </div>
+
+
+
+    </div>
+
+</section>
+@*<div class="container">
+        @Html.PagedListPager(Model.ListOfProducts, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayItemSliceAndTotal = true })
+    </div>*@

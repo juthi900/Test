@@ -1,0 +1,124 @@
+﻿@using perfume.Models.Homemenu;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/perfume.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="header">
+
+
+
+        <nav class="navbar">
+            <a href="@Url.Action("Index")">Home</a>
+
+            <a href="#products">Products</a>
+            <a href="@Url.Action("Productdetails")">Login</a>
+            <a href="@Url.Action("Checkout")">Review</a>
+            <a href="#contact">Contact</a>
+            <a href="#blogs">About</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart "  style="color:black;background:black;" id="cart-btn">
+            
+                <ul class="nav navbar-nav navbar-right  "  style="">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class=" fas fa-shopping-cart " style="padding-bottom:10px" id="cart-btn" href="#"> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @if (Session["cart"] != null)
+                            {
+                                foreach (Item item in (List<Item>)Session["cart"])
+                                {
+                                    @*<li><a href="#">@item.Product.ProductName (@item.Quantity)<i class="fa fa-times"></i></a></li>*@
+                                    <li>
+                                        <a href="@Url.Action("RemoveFromCart", "Home", new { productId=item.Product.ProductId})">@item.Product.ProductName (@item.Quantity) <i class="fa fa-times"></i></a>
+                                    </li>
+                                }
+                            }
+                            <li class="divider"></li>
+                            <li><a href="#">IT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="fas fa-bars" id="menu-btn"></div>
+        </div>
+        @model perfume.Models.Homemenu.menuModel
+        <div class="search-form">
+            <input type="text" name="search" id="search-box" placeholder="search here...">
+            <label for="search-box" class="fas fa-search"></label>
+        </div>
+
+
+    </header>
+
+
+
+    @RenderBody()
+    <hr />
+    <section class="footer">
+        <footer class="section footer-classic context-dark bg-image" style="background: #000;">
+            <div class="container">
+                <div class="row row-30">
+                    <div class="col-md-4 col-xl-5">
+                        <div class="pr-xl-4">
+
+                            <p style="margin-top:40px;">We are an award-winning creative agency, dedicated to the best result in web design, promotion, business consulting, and marketing.</p>
+                            <!-- Rights-->
+                            <p class="rights"><span>©  </span><span class="copyright-year">2018</span><span> </span><span>Waves</span><span>. </span><span>All Rights Reserved.</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Contacts</h5>
+                        <dl class="contact-list">
+                            <dt>Address:</dt>
+                            <dd>Dhanmondi, Dhaka, Bangladesh</dd>
+                        </dl>
+                        <dl class="contact-list">
+                            <dt>email:</dt>
+                            <dd><a href="mailto:#">floris@gmail.com</a></dd>
+                        </dl>
+                        <dl class="contact-list">
+                            <dt>phones:</dt>
+                            <dd>
+                                <a href="tel:#">https://karosearch.com</a> <span>or</span> <a href="tel:#">https://karosearch.com</a>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-4 col-xl-3">
+                        <h5>Links</h5>
+                        <ul class="dbc" style="list-style:none;">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contacts</a></li>
+                            <li><a href="#">Pricing</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </footer>
+
+    </section>
+
+    <script src="../js/script.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

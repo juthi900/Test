@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="perfumeShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="fume_CartStatus">
+    <Key>
+      <PropertyRef Name="CartStatusId" />
+    </Key>
+    <Property Name="CartStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="fume_Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <NavigationProperty Name="fume_Product" Relationship="Self.FK__fume_Prod__Categ__3A81B327" FromRole="fume_Category" ToRole="fume_Product" />
+  </EntityType>
+  <EntityType Name="fume_MemberRole">
+    <Key>
+      <PropertyRef Name="MemberRoleID" />
+    </Key>
+    <Property Name="MemberRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="memberId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="fume_Members">
+    <Key>
+      <PropertyRef Name="MemberId" />
+    </Key>
+    <Property Name="MemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FristName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="fume_ShippingDetails" Relationship="Self.FK__fume_Ship__Membe__4316F928" FromRole="fume_Members" ToRole="fume_ShippingDetails" />
+  </EntityType>
+  <EntityType Name="fume_Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+    <Property Name="ProductImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="fume_Category" Relationship="Self.FK__fume_Prod__Categ__3A81B327" FromRole="fume_Product" ToRole="fume_Category" />
+    <NavigationProperty Name="Tbl_Cart" Relationship="Self.FK__Tbl_Cart__CartSt__4AB81AF0" FromRole="fume_Product" ToRole="Tbl_Cart" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="fume_ShippingDetails">
+    <Key>
+      <PropertyRef Name="ShippingDetailId" />
+    </Key>
+    <Property Name="ShippingDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="Adress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="fume_Members" Relationship="Self.FK__fume_Ship__Membe__4316F928" FromRole="fume_ShippingDetails" ToRole="fume_Members" />
+  </EntityType>
+  <EntityType Name="Tbl_Cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="CartStatusId" Type="Int32" />
+    <NavigationProperty Name="fume_Product" Relationship="Self.FK__Tbl_Cart__CartSt__4AB81AF0" FromRole="Tbl_Cart" ToRole="fume_Product" />
+  </EntityType>
+  <EntityType Name="Tbl_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Tbl_SlideImage">
+    <Key>
+      <PropertyRef Name="SlideId" />
+    </Key>
+    <Property Name="SlideId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SlideTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SlideImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__fume_Prod__Categ__3A81B327">
+    <End Role="fume_Category" Type="Self.fume_Category" Multiplicity="0..1" />
+    <End Role="fume_Product" Type="Self.fume_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fume_Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="fume_Product">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__fume_Ship__Membe__4316F928">
+    <End Role="fume_Members" Type="Self.fume_Members" Multiplicity="0..1" />
+    <End Role="fume_ShippingDetails" Type="Self.fume_ShippingDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fume_Members">
+        <PropertyRef Name="MemberId" />
+      </Principal>
+      <Dependent Role="fume_ShippingDetails">
+        <PropertyRef Name="MemberId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tbl_Cart__CartSt__4AB81AF0">
+    <End Role="fume_Product" Type="Self.fume_Product" Multiplicity="0..1" />
+    <End Role="Tbl_Cart" Type="Self.Tbl_Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fume_Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Tbl_Cart">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="perfumeShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="fume_CartStatus" EntityType="Self.fume_CartStatus" />
+    <EntitySet Name="fume_Category" EntityType="Self.fume_Category" />
+    <EntitySet Name="fume_MemberRole" EntityType="Self.fume_MemberRole" />
+    <EntitySet Name="fume_Members" EntityType="Self.fume_Members" />
+    <EntitySet Name="fume_Product" EntityType="Self.fume_Product" />
+    <EntitySet Name="fume_ShippingDetails" EntityType="Self.fume_ShippingDetails" />
+    <EntitySet Name="Tbl_Cart" EntityType="Self.Tbl_Cart" />
+    <EntitySet Name="Tbl_Roles" EntityType="Self.Tbl_Roles" />
+    <EntitySet Name="Tbl_SlideImage" EntityType="Self.Tbl_SlideImage" />
+    <AssociationSet Name="FK__fume_Prod__Categ__3A81B327" Association="Self.FK__fume_Prod__Categ__3A81B327">
+      <End Role="fume_Category" EntitySet="fume_Category" />
+      <End Role="fume_Product" EntitySet="fume_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__fume_Ship__Membe__4316F928" Association="Self.FK__fume_Ship__Membe__4316F928">
+      <End Role="fume_Members" EntitySet="fume_Members" />
+      <End Role="fume_ShippingDetails" EntitySet="fume_ShippingDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tbl_Cart__CartSt__4AB81AF0" Association="Self.FK__Tbl_Cart__CartSt__4AB81AF0">
+      <End Role="fume_Product" EntitySet="fume_Product" />
+      <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

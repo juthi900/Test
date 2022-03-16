@@ -1,0 +1,55 @@
+﻿@model perfume.Models.Homemenu.menuModel
+@{
+    ViewBag.Title = "info";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>info</h2>
+
+div class="box-container">
+
+<section class="blogs" id="blogs">
+
+    <h1 class="heading">  <span>Best sellers</span> </h1>
+
+    <div class="box-container">
+        @foreach (var item in Model.ListOfProducts)
+        {
+            if (@item.ProductId <= 21)
+            {
+
+                <div class="box">
+                    <div class="image">
+                        <img src="~/Perfumeimg/@item.ProductImage" alt="">
+                    </div>
+                    <div class="content">
+                        <p>@item.ProductName</p>
+
+                        <p>$@item.price </p>
+                        <p>$@item.Description </p>
+
+
+                        <p>
+                            @if (item.Quantity > 0)
+                            {
+                                using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId, url = "Index" }, FormMethod.Post))
+                                {<button type="submit" class="pull-right">Shop it</button>
+
+                                }
+                            <p>Available</p>
+
+                        }
+                        else
+                        {
+                            <p>Not Available</p>
+                        }
+
+
+                        </div>
+                    </div>
+                }
+            }
+    </div>
+</section>
+
+
