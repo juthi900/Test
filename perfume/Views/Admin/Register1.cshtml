@@ -1,0 +1,94 @@
+﻿
+@model perfume.ViewModel.Register1
+
+@{
+
+
+    Layout = "~/Views/Shared/View.cshtml";
+    ViewBag.Title = "Register1";
+
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+@*<link href="~/AdminStyle/css/ContentAdd.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/perfume.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+@*<link href="~/Content/login.css" rel="stylesheet" />*@
+
+<style>
+</style>
+
+
+
+<div>
+    @using (Html.BeginForm("SaveRegisterDetails2", "Admin"))
+    {
+        <section class="about" id="about">
+
+            <h1 class="heading"> <span>Hello Admin! Please SignUp Now </span>  </h1>
+
+            <div class="row">
+
+                <div class="image">
+                    <img src="../img/ads.jpg" alt="">
+                </div>
+
+                <div class="content" style="color:white; font-size:20px; padding:10px">
+
+                    <h3>SignUp</h3>
+
+                    <div class="row">
+                        <!--Show details are saved successfully message-->
+                        <div class="col-lg-12">@ViewBag.Message</div>
+                    </div><br />
+                    <div style="color:red;">@Html.ValidationSummary()</div>
+                    <div class="row">
+                        <!--Show details are saved successfully message-->
+                        <div class="col-lg-12">@ViewBag.Message</div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-lg-4">@Html.LabelFor(a => a.FirstName)</div>
+                        <div class="col-lg-8">@Html.TextBoxFor(a => a.FirstName, new { @class = "form-control" })</div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-lg-4">@Html.LabelFor(a => a.LastName)</div>
+                        <div class="col-lg-8">@Html.TextBoxFor(a => a.LastName, new { @class = "form-control" })</div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-lg-4">@Html.LabelFor(a => a.Email)</div>
+                        <div class="col-lg-8" style="text-transform:lowercase;">@Html.TextBoxFor(a => a.Email, new { @class = "form-control" })</div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-lg-4">@Html.LabelFor(a => a.Password)</div>
+                        <div class="col-lg-8">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "Password" })</div>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <p style="color:white">
+                            please register now
+                            <a href="@Url.Action("Login1")" style="color:white">Login</a>
+                        </p>
+                    </div>
+                    <input type="submit" value="SignUp" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </section>
+    }
+
+</div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -353,6 +353,78 @@ section {
     }
 }
 
+
+
+
+.olContent {
+    width: 30%;
+}
+
+    .olContent h2 {
+        color: #fff;
+        font-size: 19px;
+        padding: 9px 0 0;
+    }
+
+/*.olSearch {
+    width: 30%;
+}
+
+    .olSearch .inputComn {
+        margin-bottom: 0;
+    }
+
+.inputComn {
+    color: black;
+    font-size: 14px;
+    height: 44px;
+    width: 100%;
+    cursor: pointer;
+    padding: 0 15px;
+}
+
+.searchIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.searchBtn {
+    background-color: #005faa;
+    border: 0 none;
+    color: #fff;
+    font-size: 16px;
+    padding: 11px 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    height: 44px;
+}
+
+    .searchBtn:hover {
+        background-color: #326987;
+    }
+
+.olSearch {
+    position: relative;
+}
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width:768px) {
 
     #menu-btn {

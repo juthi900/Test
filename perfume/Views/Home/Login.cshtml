@@ -1,0 +1,56 @@
+﻿@model perfume.ViewModel.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+   
+}
+
+<h2>Login</h2>
+<div>
+    @using (Html.BeginForm("Login", "Home"))
+
+    {
+
+
+
+        <section class="about" id="about">
+
+            <h1 class="heading"> <span>Please Login Now </span>  </h1>
+
+            <div class="row">
+
+                <div class="image" style="margin:5px;">
+                    <img src="../img/des.jpg" alt="">
+                </div>
+
+                <div class="content" style="color:white; font-size:20px; padding:10px">
+
+                    <h3>Login</h3>
+
+                    <div class="row">
+                        <!--Show details are saved successfully message-->
+                        <div class="col-lg-12">@ViewBag.Message</div>
+                    </div><br />
+
+                    <div class="row">
+                        <div class="col-lg-4">@Html.LabelFor(a => a.Email)</div>
+                        <div class="col-lg-8">@Html.TextBoxFor(a => a.Email, new { @class = "form-control" })</div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-lg-4">@Html.LabelFor(a => a.Password)</div>
+                        <div class="col-lg-8">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "Password" })</div>
+                    </div><br />
+
+                    <div class="row">
+                        <p style="color:white;font-size:18px;margin:10px;">
+                            please register now
+                            <a href="@Url.Action("Register")" style="color:white">SignUp</a>
+                        </p>
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </section>
+    }
+</div>

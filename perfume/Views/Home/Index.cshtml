@@ -73,11 +73,12 @@
 
     <h1 class="heading">  <span>Best sellers</span> </h1>
 
-    <div class="box-container">
-        @foreach (var item in Model.ListOfProducts)
-        {
-            if (@item.ProductId <8)
+    <div class="box-container ">
+
+        
+            @foreach (var item in Model.ListOfProducts)
             {
+
 
                 <div class="box">
                     <div class="image">
@@ -96,7 +97,7 @@
                             <p>Available</p>
                             using (Html.BeginForm("AddToCart", "Home", new { productId = item.ProductId, url = "Index" }, FormMethod.Post))
                             {
-                                <button class="btn" type="submit" >Shop it</button>
+                                <button class="btn" type="submit">Shop it</button>
 
                             }
                             @*<p>Available</p>*@
@@ -110,10 +111,11 @@
                             @*<a href="#" class="btn">SHOP IT</a>*@
                         </div>
                     </div>
-            }
-        }
-    </div>
-        
+                }
+
+        </div>
+   
+
 </section>
 
 

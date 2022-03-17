@@ -136,6 +136,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="fume\Contact.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="fume\fume_CartStatus.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -169,6 +172,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="fume\RegisterUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fume\Tbl_Admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="fume\Tbl_Cart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -189,6 +198,11 @@
     <Compile Include="reposit\genreposit.cs" />
     <Compile Include="reposit\gwork.cs" />
     <Compile Include="reposit\reposit.cs" />
+    <Compile Include="ViewModel\Contact1.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel1.cs" />
+    <Compile Include="ViewModel\Register.cs" />
+    <Compile Include="ViewModel\Register1.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminStyle\css\sb-admin.css" />
@@ -1607,6 +1621,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\login.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\perfume.css" />
     <Content Include="favicon.ico" />
@@ -1721,6 +1736,8 @@
     <Content Include="img\try1.jpg" />
     <Content Include="img\versace.jpg" />
     <Content Include="img\versace2.jpg" />
+    <Content Include="img\vitr2.jpg" />
+    <Content Include="img\vitrhills.jpg" />
     <Content Include="img\w.png" />
     <Content Include="img\we.jpg" />
     <Content Include="js\script.js" />
@@ -1840,6 +1857,13 @@
     <Content Include="Views\Home\CheckoutDetails.cshtml" />
     <Content Include="Views\Home\Checkout.cshtml" />
     <Content Include="Views\Home\info.cshtml" />
+    <Content Include="Views\Home\Success.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Admin\Login1.cshtml" />
+    <Content Include="Views\Admin\Register1.cshtml" />
+    <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\Home\Contact1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

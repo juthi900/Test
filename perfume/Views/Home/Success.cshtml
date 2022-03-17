@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>Success</h2>
+
+@if (Request.IsAuthenticated)
+{
+
+    <span style="color:white; font-size:20px;float : right; margin-top:20px">Welcome @Html.Encode(User.Identity.Name) </span>
+}
+else
+{
+
+    @Html.ActionLink("Login", "Login", "Account")
+    <br />
+
+    @Html.ActionLink("Register", "Register", "Account")
+}

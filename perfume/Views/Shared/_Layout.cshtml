@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
 </head>
 <body>
     <header class="header">
@@ -20,20 +25,39 @@
         <nav class="navbar">
             <a href="@Url.Action("Index")">Home</a>
 
-            <a href="#products">Products</a>
-            <a href="@Url.Action("Productdetails")">Login</a>
-            <a href="@Url.Action("Checkout")">Review</a>
-            <a href="#contact">Contact</a>
-            <a href="#blogs">About</a>
+            @*<a href="#products">Products</a>
+        <a href="@Url.Action("Productdetails")">Login</a>*@
+
+            @if (Request.IsAuthenticated)
+            {
+
+                @Html.ActionLink("Log Out", "Logout", "Home")
+            }
+            else
+            {
+
+                @Html.ActionLink("Login", "Login", "Home")
+            }
+            @*<a href="#blogs">About</a>*@
+            <a href="@Url.Action("Checkoutdetails")">Checkout</a>
+            <a href="@Url.Action("Contact1")">Contact</a>
+
+
+
+
+
+
+
         </nav>
 
         <div class="icons">
-            <div class="fas fa-search" id="search-btn"></div>
-            <div class="fas fa-shopping-cart "  style="color:black;background:black;" id="cart-btn">
-            
-                <ul class="nav navbar-nav navbar-right  "  style="">
+
+            @*<div class="fas fa-search" id="search-btn"></div>*@
+            <div class="fas fa-shopping-cart " style="color:black;background:black;" id="cart-btn">
+
+                <ul class="nav navbar-nav navbar-right  " style="">
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class=" fas fa-shopping-cart " style="padding-bottom:10px" id="cart-btn" href="#"> <b class="caret"></b></a>
+                        <a data-toggle="dropdown" class=" fas fa-shopping-cart " style="padding-bottom:10px;margin-bottom:10px;" id="cart-btn" href="#"> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             @if (Session["cart"] != null)
                             {
@@ -46,7 +70,7 @@
                                 }
                             }
                             <li class="divider"></li>
-                            <li><a href="#">IT</a></li>
+                            <li><a href="#">Cart</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -57,10 +81,19 @@
             <div class="fas fa-bars" id="menu-btn"></div>
         </div>
         @model perfume.Models.Homemenu.menuModel
-        <div class="search-form">
-            <input type="text" name="search" id="search-box" placeholder="search here...">
-            <label for="search-box" class="fas fa-search"></label>
-        </div>
+        @*<div class="search-form">
+            <form method="post">
+                <input type="text" name="search" id="search-box" placeholder="search here..." >
+                <button type="submit">
+                    <label for="search-box" class="fas fa-search"></label>
+                </button>
+
+            </form>
+
+        </div>*@
+
+
+
 
 
     </header>

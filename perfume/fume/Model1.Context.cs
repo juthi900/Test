@@ -34,5 +34,8 @@ namespace perfume.fume
         public virtual DbSet<Tbl_Cart> Tbl_Cart { get; set; }
         public virtual DbSet<Tbl_Roles> Tbl_Roles { get; set; }
         public virtual DbSet<Tbl_SlideImage> Tbl_SlideImage { get; set; }
+        public virtual DbSet<RegisterUser> RegisterUsers { get; set; }
+        public virtual DbSet<Tbl_Admin> Tbl_Admin { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
     }
 }

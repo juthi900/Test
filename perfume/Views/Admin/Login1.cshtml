@@ -1,0 +1,79 @@
+﻿
+@model perfume.ViewModel.LoginViewModel1
+
+@{
+
+
+    Layout = "~/Views/Shared/View.cshtml";
+    ViewBag.Title = "Login1";
+
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+@*<link href="~/AdminStyle/css/ContentAdd.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/perfume.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+
+@*<link href="~/Content/login.css" rel="stylesheet" />*@
+
+<style>
+</style>
+<div>
+    @using (Html.BeginForm("Login1", "Admin"))
+
+    {
+
+
+
+        <section class="about" id="about">
+
+            <h1 class="heading"> <span>Hello Admin! Please Login Now </span>  </h1>
+
+            <div class="row">
+
+                <div class="image" style="margin:5px;">
+                    <img src="../img/slide2.jpg" alt="">
+                </div>
+
+                <div class="content" style="color:white; font-size:20px; padding:10px">
+
+                    <h3>Login</h3>
+
+                    <div class="row">
+                        <!--Show details are saved successfully message-->
+                        <div class="col-lg-12">@ViewBag.Message</div>
+                    </div><br />
+
+                    <div class="row">
+                        <div class="col-lg-4">@Html.LabelFor(a => a.Email)</div>
+                        <div class="col-lg-8">@Html.TextBoxFor(a => a.Email, new { @class = "form-control" })</div>
+                    </div><br />
+                    <div class="row">
+                        <div class="col-lg-4">@Html.LabelFor(a => a.Password)</div>
+                        <div class="col-lg-8">@Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "Password" })</div>
+                    </div><br />
+
+                    <div class="row">
+                        <p style="color:white;font-size:18px;margin:10px;">
+                            please register now
+                            <a href="@Url.Action("Register1")" style="color:white">SignUp</a>
+                        </p>
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </section>
+    }
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
